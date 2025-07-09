@@ -1,0 +1,15 @@
+<button
+  [class]="attributeClass() ?? 'button mt-5'"
+  type="submit"
+  [disabled]="isFormSubmitting()"
+  [attr.name]="attributeName()"
+>
+  @if (isFormSubmitting()) {
+  <div>
+    {{ secondaryText() }}
+    <div class="spinner"></div>
+  </div>
+  } @else {
+  {{ primaryText() }}
+  }
+</button>

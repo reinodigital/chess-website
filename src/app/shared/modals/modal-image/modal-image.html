@@ -1,0 +1,19 @@
+@if (data) {
+<div class="square">
+  <div class="info">
+    <div class="info_content">
+      <div class="d-flex justify-content-between mb-3">
+        <h3 class="p-0 m-0">IMAGEN</h3>
+        <i
+          (click)="closePopUp()"
+          class="fa-solid fa-circle-xmark btn_close"
+        ></i>
+      </div>
+
+      <div class="image_div">
+        <img class="img_modal" [src]="imgUrl()" alt="modal_img" />
+      </div>
+    </div>
+  </div>
+</div>
+}

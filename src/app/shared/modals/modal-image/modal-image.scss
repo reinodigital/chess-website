@@ -1,0 +1,27 @@
+.square {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+}
+
+.info_content {
+  .btn_close {
+    cursor: pointer;
+    color: var(--primary);
+    font-size: 2.6rem;
+  }
+
+  .image_div {
+    margin-top: 0.8rem;
+
+    .img_modal {
+      max-height: 36rem;
+    }
+  }
+}

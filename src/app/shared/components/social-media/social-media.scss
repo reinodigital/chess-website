@@ -1,0 +1,10 @@
+.social_media {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  .icon_img_social {
+    color: var(--primary);
+    font-size: 3rem;
+  }
+}

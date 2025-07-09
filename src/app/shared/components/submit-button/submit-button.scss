@@ -1,0 +1,7 @@
+.responsive_btn {
+  margin-top: 0.6rem;
+
+  @media (min-width: 768px) {
+    margin-top: 1.2rem;
+  }
+}

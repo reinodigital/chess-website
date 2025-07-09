@@ -1,0 +1,53 @@
+<!-- Mobile Navigation -->
+<div class="mobile">
+  <!-- <div
+    class="mobile_icon"
+    (click)="toggleMenu()"
+    [class.open]="isMenuOpen()"
+    [style.position]="isMenuOpen() ? 'fixed' : 'absolute'"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </div> -->
+
+  <div class="mobile_icon" (click)="toggleMenu()" [class.open]="isMenuOpen()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="mobile_nav" [class.open]="isMenuOpen()">
+    <a routerLink="/" (click)="closeMobileNavbar()" class="mobile_nav_link">
+      Home
+    </a>
+    <a
+      routerLink="/contact"
+      (click)="closeMobileNavbar()"
+      class="mobile_nav_link"
+    >
+      Contact
+    </a>
+    <a
+      routerLink="/about"
+      (click)="closeMobileNavbar()"
+      class="mobile_nav_link"
+    >
+      We
+    </a>
+  </nav>
+</div>
+<!-- END Mobile Navigation -->
+
+<!-- Desktop Navigation -->
+<div class="desktop container">
+  <img src="../../../../assets/svg/bianka_logo.svg" width="160" alt="logo" />
+  <nav class="destop ms-3 me-5">
+    <ul class="desktop_ul">
+      <!-- <li class="desktop_ul_li">Programs</li> -->
+      <li class="desktop_ul_li" routerLink="/contact">Contact</li>
+      <li class="desktop_ul_li" routerLink="/about">We</li>
+    </ul>
+  </nav>
+</div>

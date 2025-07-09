@@ -1,0 +1,39 @@
+.square {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  position: relative;
+  height: 26rem;
+  width: 100%;
+}
+
+.btn_close {
+  cursor: pointer;
+  color: var(--primary);
+  font-size: 2.2rem;
+}
+
+.info {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.info_content {
+  .message {
+    margin-top: 0.8rem;
+
+    .message_text {
+      font-size: 1.4rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+  }
+}
