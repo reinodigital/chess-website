@@ -1,0 +1,154 @@
+// Spinner inside button
+.spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--text);
+  border-top-color: var(--success);
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.06rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.pb_0 {
+  padding-bottom: 0rem;
+}
+.pb_1 {
+  padding-bottom: 1rem;
+}
+.pb_2 {
+  padding-bottom: 2rem;
+}
+.pb_3 {
+  padding-bottom: 3rem;
+}
+
+.m_small {
+  margin-top: 3rem;
+
+  @media (min-width: 768px) {
+    margin-top: 6rem;
+  }
+}
+.m_medium {
+  margin-top: 5rem;
+
+  @media (min-width: 768px) {
+    margin-top: 12rem;
+  }
+}
+.m_large {
+  margin-top: 10rem;
+
+  @media (min-width: 768px) {
+    margin-top: 22rem;
+  }
+}
+
+.line_divider {
+  background-color: var(--primary);
+  height: 0.1rem;
+  width: 100%;
+}
+
+// Transparent badges
+.bg-label-primary {
+  background-color: #c4e7fe !important;
+  color: var(--primary_blue) !important;
+}
+.bg-label-success {
+  background-color: #ddface !important;
+  color: var(--green) !important;
+}
+.bg-label-danger {
+  background-color: #fbc8c0 !important;
+  color: var(--red) !important;
+}
+.bg-label-warning {
+  background-color: #f1d11a !important;
+  color: var(--black) !important;
+}
+.bg-label-light {
+  background-color: #7b8b98 !important;
+  color: var(--white) !important;
+}
+.bg-label-removed {
+  background-color: #f3b7be !important;
+  color: var(--white) !important;
+}
+// END Transparent badges
+
+// Tables elements
+.admin_tr {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--light);
+  }
+}
+// END Tables elements
+
+.box {
+  padding: 2.4rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px 3px rgb(0 0 0 / 0.1);
+}
+
+.cp {
+  cursor: pointer;
+}
+
+// FADE IN Transition
+.fadeIn {
+  animation: fadeInAnimation 0.9s ease-in-out;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// ---------- ANIMATIONS ----------
+.scale_anim {
+  transition-property: transform;
+  transition-duration: 0.5s;
+
+  &:hover {
+    transform: scale(1.08);
+  }
+}
+// ---------- END ANIMATIONS ----------
+
+// FOR TOAST NOTIFICATION
+.toast_fixed {
+  position: fixed;
+  top: 7rem;
+  right: 2rem;
+  border-radius: 8px;
+  width: 40rem;
+  z-index: 1001; // z-index of material dialog has 1000
+}
+
+// Pills
+.nav-item {
+  display: flex;
+  align-items: center;
+}

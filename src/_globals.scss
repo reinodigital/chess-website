@@ -1,0 +1,113 @@
+html {
+  font-size: 72.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  // background-color: var(--background);
+  font-family: var(--font_primary);
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+  }
+}
+
+p {
+  margin-bottom: 0.4rem;
+}
+
+.container {
+  width: 96%;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+// FORM Elements
+input {
+  border-radius: 0.3rem;
+  border: 1px solid var(--text);
+  padding: 0.3rem;
+  width: 100%;
+}
+textarea {
+  border-radius: 0.3rem;
+  border: 1px solid var(--text);
+  width: 100%;
+}
+label {
+  color: var(--letter);
+  font-size: 1.4rem;
+  margin-top: 1.6rem;
+  width: 100%;
+}
+select {
+  border-radius: 0.3rem;
+  border: 1px solid var(--text);
+  height: 2.8rem;
+  width: 100%;
+}
+small {
+  font-size: 1.1rem;
+}
+.asterisk {
+  color: var(--red);
+  font-size: 1.8rem;
+}
+.muted {
+  color: var(--light);
+  font-size: 1rem;
+}
+
+a {
+  border-bottom: none;
+  color: var(--letter);
+  font-size: 1.5rem;
+  text-decoration: unset;
+}
+
+i {
+  cursor: pointer;
+}
+
+// IMG
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+/* Button */
+.button {
+  border: none;
+  background-color: var(--secondary);
+  border-radius: 4rem;
+  color: var(--primary);
+  padding: 0.5rem 1.8rem;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}
+
+/* Bootstrap */
+.button,
+.btn {
+  font-size: 1.3rem;
+}

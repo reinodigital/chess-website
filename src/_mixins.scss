@@ -1,0 +1,9 @@
+@mixin line_divider_mixin($mobileWidth, $desktopWidth) {
+  background-color: var(--pink_light);
+  height: 0.1rem;
+  width: $mobileWidth;
+
+  @media (min-width: 768px) {
+    width: $desktopWidth;
+  }
+}
