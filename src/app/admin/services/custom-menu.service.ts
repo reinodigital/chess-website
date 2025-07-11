@@ -51,9 +51,9 @@ export class CustomMenuService {
       isActive: false,
       submenu: [
         {
-          label: 'Users',
-          baseUrl: '/admin/list-users',
-          subroutes: ['list-users', 'detail-user'],
+          label: 'Teachers',
+          baseUrl: '/admin/list-teachers',
+          subroutes: ['list-teachers', 'detail-teacher'],
         },
       ],
     },

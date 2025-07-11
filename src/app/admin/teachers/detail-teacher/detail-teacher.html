@@ -1,0 +1,127 @@
+<div class="main_content">
+  <div class="box">
+    <div class="d-flex justify-content-between">
+      <h3 class="admin_title">Detail teacher</h3>
+      <h4 class="cp" (click)="comeBackToList()">
+        <i class="fa-solid fa-angles-left"></i> Back
+      </h4>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <!-- Pills -->
+      <ul class="nav nav-pills mb-4 div_pills" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="pills-info-tab"
+            data-bs-toggle="pill"
+            type="button"
+            data-bs-target="#pills-info"
+            role="tab"
+            aria-controls="pills-info"
+            aria-selected="true"
+          >
+            Information
+          </button>
+          <!-- <button
+            class="nav-link"
+            id="pills-address-tab"
+            data-bs-toggle="pill"
+            type="button"
+            data-bs-target="#pills-address"
+            role="tab"
+            aria-controls="pills-address"
+            aria-selected="false"
+          >
+            Address
+          </button> -->
+        </li>
+      </ul>
+      <!-- End Pills -->
+
+      <div class="hstack gap-3">
+        <!-- <a
+          role="button"
+          class="btn btn-success btn_detail"
+          [routerLink]="'/admin/edit-teacher/' + teacherId"
+          title="Actualizar"
+        >
+          <i class="fa-solid fa-pen-to-square action_icon_edit"></i>
+          Editar
+        </a> -->
+        <!-- <a
+          role="button"
+          class="btn btn-danger btn_detail"
+          (click)="dataUserService.inactivateUser(this.client()!)"
+          title="Remover"
+          data-toggle="tooltip"
+          data-original-title="Delete"
+        >
+          <i class="fa-solid fa-trash-can action_icon_trash"></i>
+          <span> Desactivar</span>
+        </a> -->
+      </div>
+    </div>
+
+    <!-- Data Pills -->
+    <div class="tab-content" id="pills-tabContent">
+      <!-- Info Teacher -->
+      <div
+        class="tab-pane fade active show"
+        id="pills-info"
+        role="tabpanel"
+        aria-labelledby="pills-info-tab"
+        tabindex="0"
+      >
+        @if (teacher()) {
+        <div class="row">
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>UID </label>
+            <span>{{ teacher()!.uid }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Name </label>
+            <span>{{ teacher()!.name }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Username </label>
+            <span>{{ teacher()!.username }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Country </label>
+            <span>{{ teacher()!.country }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Gender </label>
+            <span>{{ teacher()!.gender }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Birthday </label>
+            <span>{{ teacher()!.birthday ?? "_" }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Role </label>
+            <span>
+              @for (role of teacher()!.roles; track $index) { {{ role }} }
+            </span>
+          </div>
+        </div>
+
+        }
+      </div>
+      <!-- End Info Teacher -->
+
+      <!-- Tickets -->
+      <!-- <div
+        class="tab-pane fade"
+        id="pills-address"
+        role="tabpanel"
+        aria-labelledby="pills-address-tab"
+        tabindex="0"
+      >
+        Second Pill -->
+      <!-- END Second Pill -->
+    </div>
+    <!-- End Data Pills -->
+  </div>
+</div>

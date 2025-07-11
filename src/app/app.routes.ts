@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { Home } from './pages/home/home';
 import { AuthGuard } from './guards/auth.guard';
-import { AdminDashboard } from './admin/admin-dashboard/admin-dashboard';
+import { AdminGuard } from './guards/admin.guard';
 import { TeacherGuard } from './guards/teacher.guard';
+
+import { Home } from './pages/home/home';
+import { AdminDashboard } from './admin/admin-dashboard/admin-dashboard';
 
 export const routes: Routes = [
   {
@@ -33,6 +35,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         canLoad: [AuthGuard],
       },
+
       // PLAYERS
       {
         path: 'list-players',
@@ -47,6 +50,22 @@ export const routes: Routes = [
           import('./admin/players/detail-player/detail-player'),
         canActivate: [TeacherGuard],
         canLoad: [TeacherGuard],
+      },
+
+      // TEACHERS
+      {
+        path: 'list-teachers',
+        loadComponent: () =>
+          import('./admin/teachers/list-teachers/list-teachers'),
+        canActivate: [AdminGuard],
+        canLoad: [AdminGuard],
+      },
+      {
+        path: 'detail-teacher/:id',
+        loadComponent: () =>
+          import('./admin/teachers/detail-teacher/detail-teacher'),
+        canActivate: [AdminGuard],
+        canLoad: [AdminGuard],
       },
     ],
   },
