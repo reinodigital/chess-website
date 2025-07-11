@@ -1,7 +1,7 @@
 <div class="main_content">
   <div class="box">
     <div class="d-flex justify-content-between">
-      <h3 class="">Detail player</h3>
+      <h3 class="admin_title">Detail player</h3>
       <h4 class="cp" (click)="comeBackToList()">
         <i class="fa-solid fa-angles-left"></i> Back
       </h4>
@@ -21,7 +21,7 @@
             aria-controls="pills-info"
             aria-selected="true"
           >
-            Info
+            Information
           </button>
           <!-- <button
             class="nav-link"
@@ -74,26 +74,39 @@
         tabindex="0"
       >
         @if (player()) {
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-secondary">
-            <span class="fw-bold">Name </span>
-            <span class="ms-4">{{ player()!.name }}</span>
-          </li>
-          <li class="list-group-item list-group-item-light">
-            <span class="fw-bold">Username </span>
-            <span class="ms-4">{{ player()!.username }}</span>
-          </li>
-          <li class="list-group-item list-group-item-light">
-            <span class="fw-bold">Country </span>
-            <span class="ms-4">{{ player()!.country }}</span>
-          </li>
-          <li class="list-group-item list-group-item-light">
-            <span class="fw-bold">Rol </span>
-            <span class="ms-4">
+        <div class="row">
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>UID </label>
+            <span>{{ player()!.uid }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Name </label>
+            <span>{{ player()!.name }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Username </label>
+            <span>{{ player()!.username }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Country </label>
+            <span>{{ player()!.country }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Gender </label>
+            <span>{{ player()!.gender }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Birthday </label>
+            <span>{{ player()!.birthday ?? "_" }}</span>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3 mb-3">
+            <label>Role </label>
+            <span>
               @for (role of player()!.roles; track $index) { {{ role }} }
             </span>
-          </li>
-        </ul>
+          </div>
+        </div>
+
         }
       </div>
       <!-- End Info Player -->

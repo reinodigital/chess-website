@@ -1,28 +1,19 @@
 <div class="main_content">
   <div class="filters mb-4">
     <div class="box">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h3 class="mb-0">Filter players</h3>
+      <div
+        class="d-flex justify-content-between align-items-center cp mb-2"
+        (click)="openCloseFilters()"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseFilters"
+        [attr.aria-expanded]="filtersOpen()"
+        aria-controls="collapseFilters"
+      >
+        <h3 class="admin_title mb-0">Filter players</h3>
         @if (filtersOpen()) {
-        <i
-          class="fa-solid fa-window-minimize"
-          (click)="openCloseFilters()"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseFilters"
-          [attr.aria-expanded]="!filtersOpen()"
-          aria-controls="collapseFilters"
-        >
-        </i>
+        <i class="fa-solid fa-window-minimize"> </i>
         } @else {
-        <i
-          class="fa-solid fa-window-maximize"
-          (click)="openCloseFilters()"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseFilters"
-          [attr.aria-expanded]="filtersOpen()"
-          aria-controls="collapseFilters"
-        >
-        </i>
+        <i class="fa-solid fa-window-maximize"> </i>
         }
       </div>
       <div class="collapse" id="collapseFilters">
@@ -97,7 +88,7 @@
     <div class="box">
       <div class="row">
         <div class="d-flex align-items-center justify-content-between mb-5">
-          <h3>List players ({{ total() }})</h3>
+          <h3 class="admin_title">List players ({{ total() }})</h3>
         </div>
 
         <div class="table-responsive">
@@ -106,6 +97,8 @@
               <tr>
                 <th>Name</th>
                 <th>Username</th>
+                <th>Gender</th>
+                <th>Birthday</th>
               </tr>
             </thead>
             <tbody class="animate__animated animate__fadeIn">
@@ -116,6 +109,9 @@
               >
                 <td>{{ user.name }}</td>
                 <td>{{ user.username }}</td>
+                <td>{{ user.gender }}</td>
+                <!-- <td>{{ user.birthday | date : "MMMM d, y" }}</td> -->
+                <td>{{ user.birthday ?? "_" }}</td>
               </tr>
               } @empty {
               <tr>

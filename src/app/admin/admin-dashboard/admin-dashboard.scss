@@ -8,7 +8,6 @@
 // End Globals
 
 .main {
-  color: var(--secondary);
   height: 100%;
   position: relative;
   width: 100%;
@@ -31,6 +30,7 @@
   transition: left 0.3s ease-in-out;
 
   .main_menu_title {
+    color: var(--secondary);
     margin: 2rem 0rem 1rem 1rem;
   }
 }
@@ -39,19 +39,23 @@
   display: flex;
   flex-direction: column;
   z-index: 12;
+}
+.main_menu_list_parent {
+  .main_menu_list_parent_title_icon {
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    color: var(--secondary);
+    padding: 1rem 1.5rem;
 
-  .main_menu_list_parent {
-    .main_menu_list_parent_title_icon {
-      display: flex;
-      align-items: center;
-      border-radius: 1.5rem;
-      cursor: pointer;
-      padding: 1rem 1.5rem;
-
-      &:hover {
-        background-color: var(--gray);
-      }
+    &:hover {
+      background-color: var(--gray);
     }
+  }
+
+  .main_menu_list_parent_title_icon_label {
+    color: var(--secondary);
   }
 }
 .main_menu_list_parent_dropdown {
@@ -60,10 +64,25 @@
   .main_menu_list_parent_dropdown_link {
     cursor: pointer;
     border-radius: 1.5rem;
+    color: var(--secondary);
     display: flex;
     align-items: center;
     padding: 1rem 1.5rem;
     margin-left: 2rem;
+    position: relative;
+
+    .main_menu_list_parent_dropdown_link_check {
+      background-color: var(--secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(184, 231, 197, 0.3); // Adds a subtle shadow
+      color: transparent;
+      display: block;
+      height: 0.8rem;
+      width: 0.8rem;
+      position: absolute;
+      top: 1.7rem;
+      left: 0;
+    }
 
     &:hover {
       background-color: var(--light);
@@ -91,7 +110,12 @@
   padding: 2rem 1.4rem;
   height: 8dvh;
 
+  .main_content_header_icon {
+    color: var(--secondary);
+  }
+
   .main_content_header_title {
+    color: var(--secondary);
     margin-bottom: 0;
   }
 

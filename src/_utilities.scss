@@ -92,7 +92,7 @@
 }
 // END Transparent badges
 
-// Tables elements
+// Admin elements
 .admin_tr {
   cursor: pointer;
 
@@ -100,7 +100,10 @@
     background-color: var(--light);
   }
 }
-// END Tables elements
+.admin_title {
+  color: var(--secondary);
+}
+// END Admin elements
 
 .box {
   padding: 2.4rem;

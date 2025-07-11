@@ -64,30 +64,22 @@
           <section class="info_user">
             <div class="single_info">
               <p class="mb-3">
-                Welcome
                 <span class="user_name">{{ currentUser()?.name }}</span>
               </p>
             </div>
-            <!-- <div class="single_info">
-              <i class="fa-solid fa-mobile-button me-3"></i>
-              <p class="mb-0 text_light">{{ currentUser()?.username }}</p>
-            </div> -->
             <div class="single_info">
-              <i class="fa-solid fa-envelope-circle-check me-2"></i>
-              <p class="mb-0 text_light">
+              <p class="mb-0 fs-5">
                 {{ currentUser()?.username }}
               </p>
             </div>
             <div class="single_info">
-              <i class="fa-solid fa-dice-five me-3"></i>
-              <p class="mb-0 text_light">
-                <!-- ROLE::{{ currentUser()!.roles[0] || currentUser()!.roles[1] }} -->
-                <span>
+              <div class="mb-0">
+                <div class="d-flex align-items-center">
                   @for (role of currentUser()!.roles; track $index) {
-                  <div id="{{ $index }}">{{ role }}</div>
+                  <span class="me-2 fs-5" id="{{ $index }}">{{ role }}</span>
                   }
-                </span>
-              </p>
+                </div>
+              </div>
             </div>
           </section>
 

@@ -20,10 +20,11 @@
 
 .info_user {
   .single_info {
+    color: var(--gray);
     display: flex;
     align-items: center;
 
-    i {
+    .user_name {
       color: var(--secondary);
     }
   }

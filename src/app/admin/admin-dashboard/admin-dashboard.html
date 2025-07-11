@@ -9,7 +9,9 @@
           (click)="customMenuService.toggleMenuParent(menuItem.id)"
         >
           <i [class]="menuItem.icon"></i>
-          <span>{{ menuItem.label }}</span>
+          <span class="main_menu_list_parent_title_icon_label">
+            {{ menuItem.label }}
+          </span>
         </div>
 
         <div
@@ -22,7 +24,10 @@
             class="main_menu_list_parent_dropdown_link"
             (click)="customMenuService.navigateToRoute(sub.baseUrl)"
           >
-            <span>- {{ sub.label }}</span>
+            <div>
+              <span class="main_menu_list_parent_dropdown_link_check">_</span>
+              <span>{{ sub.label }}</span>
+            </div>
           </a>
           }
         </div>
@@ -34,7 +39,7 @@
   <div class="main_content" [class.main_content_margin_left]="isMenuOpen()">
     <header class="main_content_header">
       <div (click)="openCloseMenu()">
-        <i class="fa-solid fa-bars fs-1 me-3"></i>
+        <i class="fa-solid fa-bars main_content_header_icon fs-1 me-3"></i>
       </div>
       <h2 class="main_content_header_title">SYSTEM</h2>
       <span class="main_content_spacer"></span>
