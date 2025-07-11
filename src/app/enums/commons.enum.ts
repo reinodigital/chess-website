@@ -6,3 +6,8 @@ export enum LS {
 export enum LimitValues {
   TEN = 10,
 }
+
+export enum Gender {
+  MALE = 'male',
+  FEMALE = 'female',
+}

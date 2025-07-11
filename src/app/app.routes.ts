@@ -67,6 +67,20 @@ export const routes: Routes = [
         canActivate: [AdminGuard],
         canLoad: [AdminGuard],
       },
+
+      // BOTS
+      {
+        path: 'list-bots',
+        loadComponent: () => import('./admin/bots/list-bots/list-bots'),
+        canActivate: [AdminGuard],
+        canLoad: [AdminGuard],
+      },
+      {
+        path: 'detail-bot/:id',
+        loadComponent: () => import('./admin/bots/detail-bot/detail-bot'),
+        canActivate: [AdminGuard],
+        canLoad: [AdminGuard],
+      },
     ],
   },
   {

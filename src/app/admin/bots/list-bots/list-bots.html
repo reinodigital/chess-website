@@ -1,0 +1,130 @@
+<div class="main_content">
+  <div class="filters mb-4">
+    <div class="box">
+      <div
+        class="d-flex justify-content-between align-items-center cp mb-2"
+        (click)="openCloseFilters()"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseFilters"
+        [attr.aria-expanded]="filtersOpen()"
+        aria-controls="collapseFilters"
+      >
+        <h3 class="admin_title mb-0">Filter players</h3>
+        @if (filtersOpen()) {
+        <i class="fa-solid fa-window-minimize"> </i>
+        } @else {
+        <i class="fa-solid fa-window-maximize"> </i>
+        }
+      </div>
+      <div class="collapse" id="collapseFilters">
+        <div class="card card-body">
+          <form
+            class="search_form"
+            [formGroup]="searchForm()"
+            autocomplete="off"
+            (ngSubmit)="searchFormSubmit()"
+          >
+            <div class="row">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" />
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="d-flex flex-column">
+                  <label for="rol">Difficulty</label>
+                  <select formControlName="difficulty">
+                    <option [value]="">--Select--</option>
+                    @for (difficulty of botDifficulties; track difficulty) {
+                    <option [value]="difficulty">{{ difficulty }}</option>
+                    }
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-start mt-4">
+              <button class="btn btn-success" type="submit">Filter</button>
+              <button
+                class="btn btn-light ms-2"
+                type="button"
+                (click)="restartFilters()"
+              >
+                Restart filters
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (isLoading()) {
+  <div class="row animate__animated animate__fadeIn">
+    <div class="col-12">
+      <div class="alert alert-info text-center" role="alert">
+        <h4 class="alert-heading">Loading</h4>
+        <i class="fa fa-spin fa-refresh fa-2x"></i>
+        <p class="mb-o">Loading...</p>
+      </div>
+    </div>
+  </div>
+  } @if (!isLoading()) {
+  <div class="table_clients">
+    <div class="box">
+      <div class="row">
+        <div class="d-flex align-items-center justify-content-between mb-5">
+          <h3 class="admin_title">List bots ({{ total() }})</h3>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Difficulty</th>
+                <th>Elo</th>
+              </tr>
+            </thead>
+            <tbody class="animate__animated animate__fadeIn">
+              @for (bot of bots(); track bot.id) {
+              <tr class="admin_tr" [routerLink]="'/admin/detail-bot/' + bot.id">
+                <td>{{ bot.name }}</td>
+                <td>{{ bot.difficulty }}</td>
+                <td>{{ bot.elo }}</td>
+              </tr>
+              } @empty {
+              <tr>
+                <div class="w-100 d-flex justify-content-start">
+                  <div class="alert alert-warning">
+                    {{
+                      isActiveFilters()
+                        ? "Empty result for that search"
+                        : "There are no bots at the moment in system"
+                    }}
+                  </div>
+                </div>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        <!-- END TABLE -->
+      </div>
+      <!-- END ROW -->
+    </div>
+    <!-- End BOX -->
+  </div>
+  }
+
+  <!-- Pagination -->
+  @if (total()) {
+  <div class="d-flex justify-content-center w_100 mt-4">
+    <pagination
+      [total]="total()"
+      [factor]="limit"
+      [initialPage]="currentPage()"
+      (pageEmitter)="detectChangePage($event)"
+    ></pagination>
+  </div>
+  }
+</div>

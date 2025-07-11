@@ -36,6 +36,8 @@ export class TeacherGuard {
           ) {
             this.router.navigateByUrl('/login');
           }
+        } else {
+          this.router.navigateByUrl('/login');
         }
       })
     );
@@ -57,6 +59,8 @@ export class TeacherGuard {
           ) {
             this.router.navigateByUrl('/login');
           }
+        } else {
+          this.router.navigateByUrl('/login');
         }
       })
     );

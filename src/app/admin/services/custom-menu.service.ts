@@ -55,6 +55,11 @@ export class CustomMenuService {
           baseUrl: '/admin/list-teachers',
           subroutes: ['list-teachers', 'detail-teacher'],
         },
+        {
+          label: 'Bots',
+          baseUrl: '/admin/list-bots',
+          subroutes: ['list-bots', 'detail-bot'],
+        },
       ],
     },
   ]);
