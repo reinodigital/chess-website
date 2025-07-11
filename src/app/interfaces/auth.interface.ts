@@ -1,3 +1,13 @@
+export interface ICountAndListUsers {
+  total: number;
+  page: number;
+  users: IAuth[];
+}
+
+export interface IAuthResponse {
+  user: IAuth;
+  token: string;
+}
 export interface IAuth {
   uid: number;
   name: string;

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, tap } from 'rxjs';
@@ -9,9 +9,11 @@ import { TokenService } from './token.service';
 import { LS, SecurityRoles } from '../enums';
 import {
   IAuth,
+  IAuthResponse,
   IAuthToLogin,
   IAuthToRegister,
   IAuthToUpdate,
+  ICountAndListUsers,
 } from '../interfaces';
 
 @Injectable({
@@ -29,6 +31,16 @@ export class AuthService {
     return this._user();
   }
 
+  get isTeacher() {
+    if (!this._user()) return false;
+
+    return (
+      this._user()!.roles.includes(SecurityRoles.TEACHER) ||
+      this._user()!.roles.includes(SecurityRoles.ADMIN) ||
+      this._user()!.roles.includes(SecurityRoles.SUPER_ADMIN)
+    );
+  }
+
   get isAdmin() {
     if (!this._user()) return false;
 
@@ -44,46 +56,46 @@ export class AuthService {
     return this._user()!.roles.includes(SecurityRoles.SUPER_ADMIN);
   }
 
-  login(dataToLogin: IAuthToLogin): Observable<IAuth | any> {
+  login(dataToLogin: IAuthToLogin): Observable<IAuthResponse | any> {
     const url = `${this._baseUrl}/auth/login`;
 
-    return this.http.post<IAuth>(url, dataToLogin).pipe(
+    return this.http.post<IAuthResponse>(url, dataToLogin).pipe(
       tap((resp) => {
-        if (resp.uid && this.tokenService.isBrowser) {
+        if (resp.user && this.tokenService.isBrowser) {
           localStorage.setItem(LS.LS_TOKEN_SYSTEM, resp.token!);
         }
       }),
-      map((resp) => resp),
+      map((resp) => resp.user),
       catchError((err) => of(err.error))
     );
   }
 
   // SIGN UP
-  register(dataToRegister: IAuthToRegister): Observable<IAuth | any> {
+  register(dataToRegister: IAuthToRegister): Observable<IAuthResponse | any> {
     const url = `${this._baseUrl}/auth/register`;
 
     return this.http
-      .post<IAuth>(url, dataToRegister, {
+      .post<IAuthResponse>(url, dataToRegister, {
         headers: this.tokenService.getToken,
       })
       .pipe(
-        map((resp) => resp),
+        map((resp) => resp.user),
         catchError((err) => of(err.error))
       );
   }
 
   // RENEW
   revalidateToken(): Observable<boolean> {
-    const url = `${this._baseUrl}/auth/renew`;
+    const url = `${this._baseUrl}/auth/verify`;
 
     return this.http
-      .get<IAuth>(url, { headers: this.tokenService.getToken })
+      .get<IAuthResponse>(url, { headers: this.tokenService.getToken })
       .pipe(
         map((resp) => {
-          if (resp.uid && this.tokenService.isBrowser) {
+          if (resp.user && this.tokenService.isBrowser) {
             localStorage.setItem(LS.LS_TOKEN_SYSTEM, resp.token!);
 
-            const { name, uid, ...restUser } = resp!;
+            const { name, uid, ...restUser } = resp.user!;
             this._user.set({
               uid,
               name,
@@ -110,13 +122,13 @@ export class AuthService {
   }
 
   // UPDATE
-  update(uid: number, data: IAuthToUpdate): Observable<IAuth | any> {
+  update(uid: number, data: IAuthToUpdate): Observable<IAuthResponse | any> {
     const url = `${this._baseUrl}/auth/${uid}`;
 
     return this.http
-      .patch<IAuth>(url, data, { headers: this.tokenService.getToken })
+      .patch<IAuthResponse>(url, data, { headers: this.tokenService.getToken })
       .pipe(
-        map((resp) => resp),
+        map((resp) => resp.user),
         catchError((err) => of(err.error))
       );
   }
@@ -135,35 +147,39 @@ export class AuthService {
             this.router.navigateByUrl('/login');
           }
         }),
-        map((resp) => resp),
+        map((resp) => resp.user),
         catchError((err) => of(err.error))
       );
   }
 
   // FETCH ALL
-  // fetchAllByAdmin(
-  //   limit: number,
-  //   offset: number,
-  //   filters: any
-  // ): Observable<IAuthAndCount> {
-  //   const url = `${this._baseUrl}/auth`;
+  fetchAll(
+    limit: number,
+    page: number,
+    filters: any
+  ): Observable<ICountAndListUsers> {
+    const url = `${this._baseUrl}/auth`;
 
-  //   let params = new HttpParams().set('limit', limit).set('offset', offset);
+    let params = new HttpParams().set('limit', limit).set('page', page);
 
-  //   Object.keys(filters).forEach((key) => {
-  //     // Append filters to query params
-  //     if (filters[key]) {
-  //       params = params.set(key, filters[key]);
-  //     }
-  //   });
+    Object.keys(filters).forEach((key) => {
+      // Append filters to query params
+      if (filters[key]) {
+        params = params.set(key, filters[key]);
+      }
+    });
 
-  //   return this.http
-  //     .get<IAuthAndCount>(url, { headers: this.tokenService.getToken, params })
-  //     .pipe(
-  //       map((resp) => resp),
-  //       catchError((err) => of(err.error))
-  //     );
-  // }
+    return this.http
+      .get<ICountAndListUsers>(url, {
+        headers: this.tokenService.getToken,
+        params,
+        withCredentials: true,
+      })
+      .pipe(
+        map((resp) => resp),
+        catchError((err) => of(err.error))
+      );
+  }
 
   fetchAllTeachers(): Observable<IAuth[]> {
     const url = `${this._baseUrl}/auth/all-teachers`;

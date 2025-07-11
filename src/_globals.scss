@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  // background-color: var(--background);
+  background-color: var(--background);
   font-family: var(--font_primary);
   font-size: 1.4rem;
   margin: 0;
@@ -44,8 +44,8 @@ textarea {
   width: 100%;
 }
 label {
-  color: var(--letter);
-  font-size: 1.4rem;
+  color: var(--text);
+  font-size: 1.5rem;
   margin-top: 1.6rem;
   width: 100%;
 }
@@ -69,7 +69,7 @@ small {
 
 a {
   border-bottom: none;
-  color: var(--letter);
+  color: var(--text);
   font-size: 1.5rem;
   text-decoration: unset;
 }

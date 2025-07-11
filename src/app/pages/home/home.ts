@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { SeoService } from '../../shared/services';
+import { Footer } from '../../shared/footer/footer';
 
 @Component({
   selector: 'home',
-  imports: [],
+  imports: [Footer],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

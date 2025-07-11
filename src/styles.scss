@@ -10,13 +10,15 @@
   --font_cursive: "League Script", serif;
 
   // Colors
-  --primary: #ffafcc;
-  --secondary: #fdc2d8;
+  --primary: #1cb0f6;
+  --secondary: #2b70c9;
 
+  --background: #faf7f6;
   --black: #000;
   --white: #fff;
   --light: #e5e5e5;
   --title: #092648;
+  --gray: #adb5bd;
   --text: #80858b;
   --red: #c1121f;
   --success: #0ca678;
@@ -29,5 +31,11 @@
   --border_radius: 0.3rem;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

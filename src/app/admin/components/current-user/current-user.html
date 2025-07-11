@@ -1,0 +1,51 @@
+<div class="user" #userContainer>
+  <div class="user_icon" #userIcon title="Mi Perfil">
+    <i class="fa-solid fa-user-tie"></i>
+  </div>
+  <div class="user_info" [class.appearance]="userInfoIsOpen()">
+    @if (currentUser().uid !== 0) {
+    <ul>
+      <li class="user_info_li">
+        <i class="fa-solid fa-user"></i>
+        <span class="ms-2">{{ currentUser().name }}</span>
+      </li>
+      <li class="user_info_li">
+        <i class="fa-solid fa-envelope"></i>
+        <span class="ms-2">{{ currentUser().username }}</span>
+      </li>
+      <li class="user_info_li">
+        <i class="fa-solid fa-bolt"></i>
+        <span class="ms-2">{{ currentUser().roles[0] }}</span>
+      </li>
+    </ul>
+
+    <div class="line_divider mt-2"></div>
+
+    <button
+      class="btn btn-success mt-3 user_info_button"
+      type="button"
+      routerLink="/admin/profile"
+    >
+      <i class="fa-solid fa-user me-2"></i>
+      Go to My Profile
+    </button>
+
+    <!-- <button
+      class="btn btn-danger mt-3 user_info_button"
+      type="button"
+      (click)="logout()"
+    >
+      <i class="fa-solid fa-door-closed"></i>
+      Cerrar Sesión
+    </button> -->
+    } @else {
+    <div class="alert alert-warning">
+      <h6>Section closed</h6>
+    </div>
+
+    <button class="btn btn-success mt-3" type="button" routerLink="/login">
+      Login
+    </button>
+    }
+  </div>
+</div>

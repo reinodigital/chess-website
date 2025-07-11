@@ -1,0 +1,61 @@
+<div class="main">
+  <aside class="main_menu" [class.main_menu_open]="isMenuOpen()">
+    <h3 class="main_menu_title">MENU</h3>
+    <nav class="main_menu_list">
+      @for (menuItem of customMenuService.menu(); track $index) {
+      <div class="main_menu_list_parent">
+        <div
+          class="main_menu_list_parent_title_icon"
+          (click)="customMenuService.toggleMenuParent(menuItem.id)"
+        >
+          <i [class]="menuItem.icon"></i>
+          <span>{{ menuItem.label }}</span>
+        </div>
+
+        <div
+          class="main_menu_list_parent_dropdown"
+          [class.showLinks]="menuItem.isActive"
+          [id]="menuItem.id"
+        >
+          @for (sub of menuItem.submenu; track $index) {
+          <a
+            class="main_menu_list_parent_dropdown_link"
+            (click)="customMenuService.navigateToRoute(sub.baseUrl)"
+          >
+            <span>- {{ sub.label }}</span>
+          </a>
+          }
+        </div>
+      </div>
+      }
+    </nav>
+  </aside>
+
+  <div class="main_content" [class.main_content_margin_left]="isMenuOpen()">
+    <header class="main_content_header">
+      <div (click)="openCloseMenu()">
+        <i class="fa-solid fa-bars fs-1 me-3"></i>
+      </div>
+      <h2 class="main_content_header_title">SYSTEM</h2>
+      <span class="main_content_spacer"></span>
+      <a
+        class="main_content_header_website_link"
+        title="Ir a sitio web"
+        [routerLink]="['']"
+      >
+        <i class="fas fa-globe me-2"></i>
+        <span>Website</span>
+      </a>
+      <!-- Authenticated User -->
+      <current-user></current-user>
+      <!-- End Authenticated User -->
+    </header>
+
+    <!-- SYSTEM -->
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <div class="main_content_spacer"></div>
+  </div>
+</div>

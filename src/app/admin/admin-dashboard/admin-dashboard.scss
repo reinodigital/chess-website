@@ -1,0 +1,132 @@
+// Globals
+.main_menu_open {
+  left: 0 !important;
+}
+.main_content_margin_left {
+  padding-left: 21rem;
+}
+// End Globals
+
+.main {
+  color: var(--secondary);
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+// MENU
+.main_menu {
+  background-color: var(--primary);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); // Right shadow
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0.4rem;
+  position: absolute;
+  top: 0;
+  left: -24rem;
+  height: 100dvh;
+  width: 21rem;
+  z-index: 11;
+  transition: left 0.3s ease-in-out;
+
+  .main_menu_title {
+    margin: 2rem 0rem 1rem 1rem;
+  }
+}
+
+.main_menu_list {
+  display: flex;
+  flex-direction: column;
+  z-index: 12;
+
+  .main_menu_list_parent {
+    .main_menu_list_parent_title_icon {
+      display: flex;
+      align-items: center;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      padding: 1rem 1.5rem;
+
+      &:hover {
+        background-color: var(--gray);
+      }
+    }
+  }
+}
+.main_menu_list_parent_dropdown {
+  display: none;
+
+  .main_menu_list_parent_dropdown_link {
+    cursor: pointer;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    margin-left: 2rem;
+
+    &:hover {
+      background-color: var(--light);
+    }
+  }
+}
+.showLinks {
+  display: flex;
+  flex-direction: column;
+}
+// End menu
+
+.main_content {
+  display: flex;
+  flex-direction: column;
+  transition: padding-left 0.3s ease-in-out;
+}
+
+// Top bar
+.main_content_header {
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); // Right shadow
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  padding: 2rem 1.4rem;
+  height: 8dvh;
+
+  .main_content_header_title {
+    margin-bottom: 0;
+  }
+
+  a.main_content_header_website_link {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+      margin-right: 1.4rem;
+      color: var(--secondary);
+    }
+  }
+
+  .main_content_spacer {
+    flex: 1 auto;
+  }
+}
+
+// Router outlet
+.content {
+  padding: 1rem;
+  height: 92dvh;
+  overflow-y: scroll;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+// Main content spacer
+.main_content_spacer {
+  flex: 1 auto;
+}
+
+// Footer
+.footer {
+  margin-left: 1rem;
+}

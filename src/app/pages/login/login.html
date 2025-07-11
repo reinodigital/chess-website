@@ -1,0 +1,81 @@
+<div class="login-page d-flex justify-content-center align-items-center">
+  <div class="glass-card login-content card shadow rounded-4">
+    <div class="text-center mb-4">
+      <h2 class="login-content-title">Login</h2>
+      <p class="login-content-subtitle">Access with your credentials</p>
+    </div>
+
+    <form [formGroup]="loginForm()" (ngSubmit)="login()">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username">
+          Username <span class="text-danger">*</span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-icon bg-transparent border-end-0">
+            <i class="fa-solid fa-envelope"></i>
+          </span>
+          <input
+            type="email"
+            id="username"
+            class="form-control"
+            formControlName="username"
+            placeholder="your username"
+          />
+        </div>
+        @if (isInvalidField('username')) { @if (formErrors('username') &&
+        formErrors('username')!['required']) {
+        <small class="text-danger">The username is required</small>
+        } @if (formErrors('username') && formErrors('username')!['username']) {
+        <small class="text-danger">username format is not valid</small>
+        } }
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label
+          for="password"
+          class="d-flex justify-content-between align-items-center"
+        >
+          <span>Password <span class="text-danger">*</span></span>
+          <span
+            class="bg-transparent"
+            style="cursor: pointer"
+            (click)="displayPassword()"
+          >
+            <i
+              class="fa-solid"
+              [class]="
+                passwordType() === 'password' ? 'fa-eye' : 'fa-eye-slash'
+              "
+            ></i>
+          </span>
+        </label>
+        <div class="input-group">
+          <span class="input-group-icon bg-transparent border-end-0">
+            <i class="fa-solid fa-lock"></i>
+          </span>
+          <input
+            [type]="passwordType()"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Su contraseña"
+          />
+        </div>
+        @if (isInvalidField('password')) { @if (formErrors('password') &&
+        formErrors('password')!['required']) {
+        <small class="text-danger">Password is required</small>
+        } }
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 fw-semibold py-2">
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <footer></footer>
+</footer>

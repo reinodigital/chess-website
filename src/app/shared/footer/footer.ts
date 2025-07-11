@@ -8,6 +8,5 @@ import { SocialMedia } from '../components/social-media/social-media';
   templateUrl: './footer.html',
   styleUrls: ['./footer.scss'],
   imports: [RouterLink, SocialMedia],
-  standalone: true,
 })
 export class Footer {}

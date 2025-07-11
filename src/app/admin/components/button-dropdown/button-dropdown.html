@@ -1,0 +1,27 @@
+<div class="dropdown" [class.show]="isMenuVisible()">
+  <button
+    class="btn btn-secondary dropdown-toggle btn_detail show"
+    type="button"
+    id="dropdownMenuButton"
+    (click)="isMenuVisible.set(!isMenuVisible())"
+  >
+    <i class="fa-solid fa-globe me-1"></i>
+    {{ buttonTitle() }}
+  </button>
+  @if (isMenuVisible()) {
+
+  <ul
+    class="dropdown-menu show btn btn-secondary"
+    aria-labelledby="dropdownMenuButton"
+  >
+    @for (label of actionsLabels();let i = $index;track label){
+    <li>
+      <a class="dropdown-item" (click)="actionsMethods()[i]()">
+        <span class="checked" [class.hidden]="!actionsChecked()[i]"></span>
+        {{ label }}
+      </a>
+    </li>
+    }
+  </ul>
+  }
+</div>
